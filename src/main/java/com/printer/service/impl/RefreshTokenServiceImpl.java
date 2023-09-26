@@ -38,13 +38,10 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 	@Override
 	public RefreshToken createRefreshToken(Long userId) {
 		RefreshToken refreshToken = new RefreshToken();
-
 		refreshToken.setUser(this.userService.findById(userId));
 		refreshToken.setExpiryDate(Instant.now().plusMillis(refreshTokenDurationMs));
 		refreshToken.setToken(UUID.randomUUID().toString());
-
-		refreshToken = this.refreshTokenRepository.save(refreshToken);
-		return refreshToken;
+		return this.refreshTokenRepository.save(refreshToken);
 	}
 
 	@Override
