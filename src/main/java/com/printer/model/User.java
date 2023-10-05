@@ -14,15 +14,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity(name = "user")
+@Entity
+@Table(name = "user", schema = "auth")
 @NoArgsConstructor
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -43,7 +44,12 @@ public class User {
 	@JoinTable(name = "USER_ROLES", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
 			@JoinColumn(name = "ROLE_ID") })
 	private Set<Role> roles;
-	
+	@ManyToMany(mappedBy = "users")
+    private Set<Organization> orgs;
+
+	public User(Long id) {
+		this.id = id;
+	}
 	public User(String username, String email, String password, String language) {
 		this.username = username;
 		this.password = password;

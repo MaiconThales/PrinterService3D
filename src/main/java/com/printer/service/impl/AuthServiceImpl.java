@@ -115,6 +115,15 @@ public class AuthServiceImpl implements AuthService {
 		}
 		return new ResponseEntity<>(false, HttpStatus.UNAUTHORIZED);
 	}
+	
+	@Override
+	public User getUserLogged() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			return this.userService.findByUsername(authentication.getName());
+		}
+		return null;
+	}
 
 	private Set<Role> setRoles(Set<String> strRoles, Set<Role> roles) {
 		if (strRoles == null) {

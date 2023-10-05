@@ -8,5 +8,11 @@ import lombok.Data;
 public class MessageResponseDTO {
 	
 	private String message;
+	
+	private String erroDescription;
+	
+	public MessageResponseDTO(String message) {
+		this.message = message;
+	}
 
 }

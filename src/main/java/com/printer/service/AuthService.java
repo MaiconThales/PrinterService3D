@@ -9,6 +9,7 @@ import com.printer.dto.request.TokenRefreshRequestDTO;
 import com.printer.dto.response.JwtResponseDTO;
 import com.printer.dto.response.MessageResponseDTO;
 import com.printer.dto.response.TokenRefreshResponseDTO;
+import com.printer.model.User;
 
 public interface AuthService {
 
@@ -45,5 +46,11 @@ public interface AuthService {
 	 * @return Returns a ResponseEntity with a boolean stating TRUE for logged in and FALSE for logged out.
 	 */
 	ResponseEntity<Boolean> isUserLogger();
+	
+	/**
+	 * Get the logged in user.
+	 * @return Returns the user logged in to the system.
+	 */
+	User getUserLogged();
 
 }

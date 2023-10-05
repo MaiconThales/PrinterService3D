@@ -1,11 +1,7 @@
 package com.printer.model;
 
-import com.printer.enums.ERole;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,19 +11,20 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "role", schema = "auth")
+@Table(name = "product", schema = "org")
 @NoArgsConstructor
-public class Role {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Enumerated(EnumType.STRING)
 	@Column
-	private ERole name;
-
+	private String name;
 	@Column
-	private String description;
+	private float width;
+	@Column
+	private float length;
+	@Column
+	private float height;
 
 }
