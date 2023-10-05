@@ -27,8 +27,7 @@ public class Organization {
 	private Long id;
 	@Column
 	private String name;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "product_id")
+	@OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
     private Set<Product> products;
 	@ManyToMany
     @JoinTable(

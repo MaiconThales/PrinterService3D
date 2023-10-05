@@ -14,5 +14,6 @@ public class ProductDTO {
 	private float width;
 	private float length;
 	private float height;
+	private OrganizationDTO organization;
 
 }

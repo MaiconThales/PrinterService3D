@@ -7,13 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.printer.model.Organization;
-
+import com.printer.model.Product;
 
 @Repository
-public interface OrganizationRepository extends JpaRepository<Organization, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 	
-	@Query("SELECT o FROM Organization o LEFT JOIN o.users u WHERE u.id = :user")
-	List<Organization> findByUsers(@Param("user") Long user);
+	@Query("SELECT p FROM Product p LEFT JOIN p.organization o WHERE o.id = :idOrg")
+	List<Product> findByOrg(@Param("idOrg") Long idOrg);
 
 }
